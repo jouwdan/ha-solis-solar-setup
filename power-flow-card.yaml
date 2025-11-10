@@ -1,0 +1,101 @@
+type: custom:sunsynk-power-flow-card
+cardstyle: compact
+show_solar: true
+battery:
+  show_daily: true
+  count: 1
+  energy: 9728
+  auto_scale: true
+  invert_power: false
+  show_absolute: true
+  dynamic_colour: false
+  linear_gradient: false
+  hide_soc: false
+  animate: false
+  show_remaining_energy: true
+  remaining_energy_to_shutdown: true
+  shutdown_soc: 12
+  colour: "#2fc51b"
+  invert_flow: false
+  soc_decimal_places: 0
+solar:
+  show_daily: true
+  mppts: 2
+  invert_flow: false
+  pv1_name: Back
+  pv2_name: Front
+  auto_scale: true
+  display_mode: 1
+  dynamic_colour: false
+  efficiency: 1
+  pv1_max_power: 3255
+  pv2_max_power: 4185
+  custom_label: Daily Solar Generated
+  colour: "#e9b21c"
+load:
+  show_daily: true
+  invert_flow: false
+  auto_scale: true
+  dynamic_colour: true
+  invert_load: false
+  essential_name: Home
+  dynamic_icon: true
+  additional_loads: 0
+  show_aux: false
+  label_daily_load: Daily Home Use
+  colour: "#ffffff"
+grid:
+  show_daily_buy: true
+  show_daily_sell: true
+  invert_grid: true
+  auto_scale: true
+  show_absolute: true
+  show_nonessential: false
+  grid_name: ESB
+  energy_cost_decimals: 0
+  additional_loads: 0
+  label_daily_grid_buy: Daily Used
+  label_daily_grid_sell: Daily Sold
+  colour: "#1798e8"
+entities:
+  use_timer_248: switch.sunsynk_toggle_system_timer
+  priority_load_243: switch.sunsynk_toggle_priority_load
+  inverter_voltage_154: sensor.solis_a_phase_voltage
+  inverter_status_59: zone.home
+  day_battery_charge_70: sensor.solis_today_battery_charge_energy
+  day_battery_discharge_71: sensor.solis_today_battery_discharge_energy
+  battery_soc_184: sensor.solis_battery_soc
+  battery_power_190: sensor.solis_battery_power
+  battery_current_191: sensor.solis_battery_current
+  grid_power_169: sensor.solis_ac_grid_port_power
+  day_grid_import_76: sensor.solis_today_energy_imported_from_grid
+  day_grid_export_77: sensor.solis_today_energy_fed_into_grid
+  day_load_energy_84: sensor.solis_today_energy_consumption
+  day_pv_energy_108: sensor.solis_pv_today_energy_generation
+  pv1_voltage_109: sensor.solis_pv_voltage_1
+  pv1_current_110: sensor.solis_pv_current_1
+  pv2_voltage_111: sensor.solis_pv_voltage_1
+  pv2_current_112: sensor.solis_pv_current_2
+  battery_temp_182: sensor.solis_temperature
+  inverter_current_164: sensor.solis_a_phase_current
+  inverter_power_175: sensor.solis_backup_load_power
+  battery_voltage_183: sensor.solis_battery_voltage
+  pv1_power_186: sensor.solis_pv_power_1
+  pv2_power_187: sensor.solis_pv_power_2
+  battery_soh: sensor.solis_battery_soh
+  battery_current_direction: sensor.solis_battery_current_direction
+  grid_voltage: sensor.solis_a_phase_voltage
+  essential_power: sensor.solis_household_load_power
+  grid_ct_power_172: sensor.solis_meter_total_active_power
+show_battery: true
+show_grid: true
+center_no_grid: false
+dynamic_line_width: true
+wide: false
+large_font: true
+inverter:
+  auto_scale: true
+  modern: true
+  model: solis
+  autarky: "no"
+  three_phase: false

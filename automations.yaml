@@ -1,0 +1,84 @@
+- id: '1762770404349'
+  alias: 02:00 Set EV Rate
+  description: ''
+  triggers:
+  - trigger: time
+    at: 02:00:00
+  conditions: []
+  actions:
+  - target:
+      entity_id: select.electric_meter
+    data:
+      option: ev
+    action: select.select_option
+  mode: single
+- id: '1762770436652'
+  alias: 06:00 Set Night Rate
+  description: ''
+  triggers:
+  - trigger: time
+    at: 06:00:00
+  conditions: []
+  actions:
+  - target:
+      entity_id: select.electric_meter
+    data:
+      value: night
+    action: select.select_option
+  mode: single
+- id: '1762770473435'
+  alias: 08:00 Set Day Rate
+  description: ''
+  triggers:
+  - trigger: time
+    at: 08:00:00
+  conditions: []
+  actions:
+  - target:
+      entity_id: select.electric_meter
+    data:
+      option: day
+    action: select.select_option
+  mode: single
+- id: '1762770494789'
+  alias: 17:00 Set Peak Rate
+  description: ''
+  triggers:
+  - trigger: time
+    at: '17:00:00'
+  conditions: []
+  actions:
+  - target:
+      entity_id: select.electric_meter
+    data:
+      value: peak
+    action: select.select_option
+  mode: single
+- id: '1762770515939'
+  alias: 19:00 Set Day Rate
+  description: ''
+  triggers:
+  - trigger: time
+    at: '19:00:00'
+  conditions: []
+  actions:
+  - target:
+      entity_id: select.electric_meter
+    data:
+      value: day
+    action: select.select_option
+  mode: single
+- id: '1762770539946'
+  alias: 23:00 Set Night Rate
+  description: ''
+  triggers:
+  - trigger: time
+    at: '23:00:00'
+  conditions: []
+  actions:
+  - target:
+      entity_id: select.electric_meter
+    data:
+      value: night
+    action: select.select_option
+  mode: single

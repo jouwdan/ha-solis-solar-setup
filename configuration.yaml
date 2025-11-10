@@ -1,0 +1,114 @@
+template:
+  - sensor:
+      # ----- DAILY COST BY TARIFF -----
+      - name: "Cost Daily - Day"
+        unique_id: cost_daily_day
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_day')|float(0) *
+              states('input_number.rate_day')|float(0)) | round(2) }}
+
+      - name: "Cost Daily - Night"
+        unique_id: cost_daily_night
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_night')|float(0) *
+              states('input_number.rate_night')|float(0)) | round(2) }}
+
+      - name: "Cost Daily - Peak"
+        unique_id: cost_daily_peak
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_peak')|float(0) *
+              states('input_number.rate_peak')|float(0)) | round(2) }}
+
+      - name: "Cost Daily - EV"
+        unique_id: cost_daily_ev
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_ev')|float(0) *
+              states('input_number.rate_ev')|float(0)) | round(2) }}
+
+      - name: "Electricity Cost - Daily (Total)"
+        unique_id: electricity_cost_daily_total
+        unit_of_measurement: "€"
+        icon: mdi:cash-multiple
+        state: >
+          {% set d = states('sensor.cost_daily___day')|float(0) %}
+          {% set n = states('sensor.cost_daily___night')|float(0) %}
+          {% set p = states('sensor.cost_daily___peak')|float(0) %}
+          {% set e = states('sensor.cost_daily___ev')|float(0) %}
+          {{ (d + n + p + e) | round(2) }}
+
+      - name: "Export Revenue - Daily"
+        unique_id: export_revenue_daily
+        unit_of_measurement: "€"
+        icon: mdi:cash-plus
+        state: >
+          {{ (states('sensor.grid_export_daily')|float(0) *
+              states('input_number.rate_export')|float(0)) | round(2) }}
+
+      - name: "Net Cost - Daily"
+        unique_id: net_cost_daily
+        unit_of_measurement: "€"
+        icon: mdi:cash
+        state: >
+          {% set cost = states('sensor.electricity_cost___daily_total')|float(0) %}
+          {% set rev  = states('sensor.export_revenue___daily')|float(0) %}
+          {{ (cost - rev) | round(2) }}
+
+utility_meter:
+  electric_meter:
+    source: sensor.meter_total_active_energy_from_grid
+    cycle: daily
+    tariffs:
+      - day
+      - night
+      - peak
+      - ev
+
+input_number:
+  rate_peak:
+    name: "Rate Peak"
+    icon: "mdi:cash"
+    min: 0
+    max: 100
+    step: 0.001
+    unit_of_measurement: "€/kWh"
+    mode: slider
+
+  rate_night:
+    name: "Rate Night"
+    icon: "mdi:cash"
+    min: 0
+    max: 100
+    step: 0.001
+    unit_of_measurement: "€/kWh"
+    mode: slider
+
+  rate_day:
+    name: "Rate Day"
+    icon: "mdi:cash"
+    min: 0
+    max: 100
+    step: 0.001
+    unit_of_measurement: "€/kWh"
+    mode: slider
+
+  rate_ev:
+    name: "Rate EV"
+    icon: "mdi:cash"
+    min: 0
+    max: 100
+    step: 0.001
+    unit_of_measurement: "€/kWh"
+    mode: slider
+
+  rate_export:
+    name: "Rate Export"
+    icon: "mdi:cash"
+    min: 0
+    max: 100
+    step: 0.001
+    unit_of_measurement: "€/kWh"
+    mode: slider
