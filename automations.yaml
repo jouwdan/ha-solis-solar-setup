@@ -7,7 +7,17 @@
   conditions: []
   actions:
   - target:
-      entity_id: select.electric_meter
+      entity_id: select.electric_meter_daily
+    data:
+      option: ev
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_weekly
+    data:
+      option: ev
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_monthly
     data:
       option: ev
     action: select.select_option
@@ -21,9 +31,19 @@
   conditions: []
   actions:
   - target:
-      entity_id: select.electric_meter
+      entity_id: select.electric_meter_daily
     data:
       value: night
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_weekly
+    data:
+      option: night
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_monthly
+    data:
+      option: night
     action: select.select_option
   mode: single
 - id: '1762770473435'
@@ -35,7 +55,17 @@
   conditions: []
   actions:
   - target:
-      entity_id: select.electric_meter
+      entity_id: select.electric_meter_daily
+    data:
+      value: day
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_weekly
+    data:
+      option: day
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_monthly
     data:
       option: day
     action: select.select_option
@@ -49,9 +79,19 @@
   conditions: []
   actions:
   - target:
-      entity_id: select.electric_meter
+      entity_id: select.electric_meter_daily
     data:
       value: peak
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_weekly
+    data:
+      option: peak
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_monthly
+    data:
+      option: peak
     action: select.select_option
   mode: single
 - id: '1762770515939'
@@ -63,9 +103,19 @@
   conditions: []
   actions:
   - target:
-      entity_id: select.electric_meter
+      entity_id: select.electric_meter_daily
     data:
       value: day
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_weekly
+    data:
+      option: day
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_monthly
+    data:
+      option: day
     action: select.select_option
   mode: single
 - id: '1762770539946'
@@ -77,8 +127,18 @@
   conditions: []
   actions:
   - target:
-      entity_id: select.electric_meter
+      entity_id: select.electric_meter_daily
     data:
       value: night
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_weekly
+    data:
+      option: night
+    action: select.select_option
+  - target:
+      entity_id: select.electric_meter_monthly
+    data:
+      option: night
     action: select.select_option
   mode: single

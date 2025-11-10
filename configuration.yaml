@@ -58,9 +58,25 @@ template:
           {{ (cost - rev) | round(2) }}
 
 utility_meter:
-  electric_meter:
+  electric_meter_daily:
     source: sensor.meter_total_active_energy_from_grid
     cycle: daily
+    tariffs:
+      - day
+      - night
+      - peak
+      - ev
+  electric_meter_weekly:
+    source: sensor.meter_total_active_energy_from_grid
+    cycle: weekly
+    tariffs:
+      - day
+      - night
+      - peak
+      - ev
+  electric_meter_monthly:
+    source: sensor.meter_total_active_energy_from_grid
+    cycle: monthly
     tariffs:
       - day
       - night
