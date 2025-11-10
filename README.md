@@ -6,12 +6,20 @@ This repository serves as a **backup and reference** for my Home Assistant–bas
 
 ## ⚙️ Hardware Overview
 
+### Solar Hardware
+
 - **Inverter:** Solis S5-EH1P 5 kW 
 - **Datalogger:** Solis S2-WL-ST
 - **Solar Panels:** 16× Longi LR7-54HTB-465M (465 W Monocrystalline)
   - PV1 (Back): 7 panels  
   - PV2 (Front): 9 panels  
 - **Battery:** Dyness Powerbox G2 10.24kWh
+
+### Home Assistant Hardware
+
+- Raspberry Pi 4 4GB
+- 64GB Sandisk SD Card
+- Sonoff ZBDongle-P (for smart plugs and energy monitoring)
 
 ---
 
