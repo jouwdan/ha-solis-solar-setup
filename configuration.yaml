@@ -1,6 +1,6 @@
 template:
   - sensor:
-            # ----- DAILY COST BY TARIFF -----
+      # ----- DAILY COST BY TARIFF -----
       - name: "Cost Daily - Day"
         unique_id: cost_daily_day
         unit_of_measurement: "€"
@@ -56,6 +56,119 @@ template:
           {% set cost = states('sensor.electricity_cost_daily_total')|float(0) %}
           {% set rev  = states('sensor.export_revenue_daily')|float(0) %}
           {{ (cost - rev) | round(2) }}
+      # ---------- WEEKLY COST BY TARIFF ----------
+      - name: "Cost Weekly - Day"
+        unique_id: cost_weekly_day
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_weekly_day')|float(0) *
+              states('input_number.rate_day')|float(0)) | round(2) }}
+
+      - name: "Cost Weekly - Night"
+        unique_id: cost_weekly_night
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_weekly_night')|float(0) *
+              states('input_number.rate_night')|float(0)) | round(2) }}
+
+      - name: "Cost Weekly - Peak"
+        unique_id: cost_weekly_peak
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_weekly_peak')|float(0) *
+              states('input_number.rate_peak')|float(0)) | round(2) }}
+
+      - name: "Cost Weekly - EV"
+        unique_id: cost_weekly_ev
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_weekly_ev')|float(0) *
+              states('input_number.rate_ev')|float(0)) | round(2) }}
+
+      - name: "Electricity Cost - Weekly (Total)"
+        unique_id: electricity_cost_weekly_total
+        unit_of_measurement: "€"
+        icon: mdi:cash-multiple
+        state: >
+          {% set d = states('sensor.cost_weekly_day')|float(0) %}
+          {% set n = states('sensor.cost_weekly_night')|float(0) %}
+          {% set p = states('sensor.cost_weekly_peak')|float(0) %}
+          {% set e = states('sensor.cost_weekly_ev')|float(0) %}
+          {{ (d + n + p + e) | round(2) }}
+
+      - name: "Export Revenue - Weekly"
+        unique_id: export_revenue_weekly
+        unit_of_measurement: "€"
+        icon: mdi:cash-plus
+        state: >
+          {{ (states('sensor.grid_export_weekly')|float(0) *
+              states('input_number.rate_export')|float(0)) | round(2) }}
+
+      - name: "Net Cost - Weekly"
+        unique_id: net_cost_weekly
+        unit_of_measurement: "€"
+        icon: mdi:cash
+        state: >
+          {% set cost = states('sensor.electricity_cost_weekly_total')|float(0) %}
+          {% set rev  = states('sensor.export_revenue_weekly')|float(0) %}
+          {{ (cost - rev) | round(2) }}
+
+      # ---------- MONTHLY COST BY TARIFF ----------
+      - name: "Cost Monthly - Day"
+        unique_id: cost_monthly_day
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_monthly_day')|float(0) *
+              states('input_number.rate_day')|float(0)) | round(2) }}
+
+      - name: "Cost Monthly - Night"
+        unique_id: cost_monthly_night
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_monthly_night')|float(0) *
+              states('input_number.rate_night')|float(0)) | round(2) }}
+
+      - name: "Cost Monthly - Peak"
+        unique_id: cost_monthly_peak
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_monthly_peak')|float(0) *
+              states('input_number.rate_peak')|float(0)) | round(2) }}
+
+      - name: "Cost Monthly - EV"
+        unique_id: cost_monthly_ev
+        unit_of_measurement: "€"
+        state: >
+          {{ (states('sensor.electric_meter_monthly_ev')|float(0) *
+              states('input_number.rate_ev')|float(0)) | round(2) }}
+
+      - name: "Electricity Cost - Monthly (Total)"
+        unique_id: electricity_cost_monthly_total
+        unit_of_measurement: "€"
+        icon: mdi:cash-multiple
+        state: >
+          {% set d = states('sensor.cost_monthly_day')|float(0) %}
+          {% set n = states('sensor.cost_monthly_night')|float(0) %}
+          {% set p = states('sensor.cost_monthly_peak')|float(0) %}
+          {% set e = states('sensor.cost_monthly_ev')|float(0) %}
+          {{ (d + n + p + e) | round(2) }}
+
+      - name: "Export Revenue - Monthly"
+        unique_id: export_revenue_monthly
+        unit_of_measurement: "€"
+        icon: mdi:cash-plus
+        state: >
+          {{ (states('sensor.grid_export_monthly')|float(0) *
+              states('input_number.rate_export')|float(0)) | round(2) }}
+
+      - name: "Net Cost - Monthly"
+        unique_id: net_cost_monthly
+        unit_of_measurement: "€"
+        icon: mdi:cash
+        state: >
+          {% set cost = states('sensor.electricity_cost_monthly_total')|float(0) %}
+          {% set rev  = states('sensor.export_revenue_monthly')|float(0) %}
+          {{ (cost - rev) | round(2) }}
 
 utility_meter:
   electric_meter_daily:
@@ -82,6 +195,16 @@ utility_meter:
       - night
       - peak
       - ev
+  grid_export_daily:
+    source: sensor.meter_total_active_energy_to_grid
+    cycle: daily
+  grid_export_weekly:
+    source: sensor.meter_total_active_energy_to_grid
+    cycle: weekly
+  grid_export_monthly:
+    source: sensor.meter_total_active_energy_to_grid
+    cycle: monthly
+
 
 input_number:
   rate_peak:
