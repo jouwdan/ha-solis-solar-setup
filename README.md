@@ -21,7 +21,7 @@ This repository serves as a **backup and reference** for my Home Assistant–bas
   Enables **local control** of the inverter (bypassing Solis Cloud), providing:
   - Data updates every **10–30 seconds**
   - Full **local configuration** control
-  - Still reports all data except house consumption (no idea why) to Solis Cloud
+  - Still reports all data except live house consumption (total still reports so no idea why live isn't reporting) to Solis Cloud
 
 - **[Sunsynk Power Flow Card](https://github.com/slipx06/sunsynk-power-flow-card)**  
   Adds a **real-time energy flow dashboard** in Home Assistant.
