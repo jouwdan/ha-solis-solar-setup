@@ -1,16 +1,17 @@
 # 🏡 Home Assistant — Solis Solar Setup
 
-This repository serves as a **backup and reference** for my Home Assistant–based solar energy setup powered by a **Solis inverter** and **Dyness Powerbox** battery.
+This repository serves as a **backup and reference** for my Home Assistant–based solar energy setup powered by a **Solis inverter** and **Dyness Powerbox G2** battery.
 
 ---
 
 ## ⚙️ Hardware Overview
 
-- **Inverter:** Solis S5-EH1P 5 kW  
+- **Inverter:** Solis S5-EH1P 5 kW 
+- **Datalogger:** Solis S2-WL-ST
 - **Solar Panels:** 16× Longi LR7-54HTB-465M (465 W Monocrystalline)
   - PV1 (Back): 7 panels  
   - PV2 (Front): 9 panels  
-- **Battery:** Dyness Powerbox G2
+- **Battery:** Dyness Powerbox G2 10.24kWh
 
 ---
 
@@ -20,6 +21,7 @@ This repository serves as a **backup and reference** for my Home Assistant–bas
   Enables **local control** of the inverter (bypassing Solis Cloud), providing:
   - Data updates every **10–30 seconds**
   - Full **local configuration** control
+  - Still reports all data except grid usage to Solis Cloud
 
 - **[Sunsynk Power Flow Card](https://github.com/slipx06/sunsynk-power-flow-card)**  
   Adds a **real-time energy flow dashboard** in Home Assistant.
