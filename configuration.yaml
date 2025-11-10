@@ -1,6 +1,6 @@
 template:
   - sensor:
-      # ----- DAILY COST BY TARIFF -----
+            # ----- DAILY COST BY TARIFF -----
       - name: "Cost Daily - Day"
         unique_id: cost_daily_day
         unit_of_measurement: "€"
@@ -34,10 +34,10 @@ template:
         unit_of_measurement: "€"
         icon: mdi:cash-multiple
         state: >
-          {% set d = states('sensor.cost_daily___day')|float(0) %}
-          {% set n = states('sensor.cost_daily___night')|float(0) %}
-          {% set p = states('sensor.cost_daily___peak')|float(0) %}
-          {% set e = states('sensor.cost_daily___ev')|float(0) %}
+          {% set d = states('sensor.cost_daily_day')|float(0) %}
+          {% set n = states('sensor.cost_daily_night')|float(0) %}
+          {% set p = states('sensor.cost_daily_peak')|float(0) %}
+          {% set e = states('sensor.cost_daily_ev')|float(0) %}
           {{ (d + n + p + e) | round(2) }}
 
       - name: "Export Revenue - Daily"
@@ -53,8 +53,8 @@ template:
         unit_of_measurement: "€"
         icon: mdi:cash
         state: >
-          {% set cost = states('sensor.electricity_cost___daily_total')|float(0) %}
-          {% set rev  = states('sensor.export_revenue___daily')|float(0) %}
+          {% set cost = states('sensor.electricity_cost_daily_total')|float(0) %}
+          {% set rev  = states('sensor.export_revenue_daily')|float(0) %}
           {{ (cost - rev) | round(2) }}
 
 utility_meter:
