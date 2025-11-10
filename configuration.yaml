@@ -5,28 +5,28 @@ template:
         unique_id: cost_daily_day
         unit_of_measurement: "€"
         state: >
-          {{ (states('sensor.electric_meter_day')|float(0) *
+          {{ (states('sensor.electric_meter_daily_day')|float(0) *
               states('input_number.rate_day')|float(0)) | round(2) }}
 
       - name: "Cost Daily - Night"
         unique_id: cost_daily_night
         unit_of_measurement: "€"
         state: >
-          {{ (states('sensor.electric_meter_night')|float(0) *
+          {{ (states('sensor.electric_meter_daily_night')|float(0) *
               states('input_number.rate_night')|float(0)) | round(2) }}
 
       - name: "Cost Daily - Peak"
         unique_id: cost_daily_peak
         unit_of_measurement: "€"
         state: >
-          {{ (states('sensor.electric_meter_peak')|float(0) *
+          {{ (states('sensor.electric_meter_daily_peak')|float(0) *
               states('input_number.rate_peak')|float(0)) | round(2) }}
 
       - name: "Cost Daily - EV"
         unique_id: cost_daily_ev
         unit_of_measurement: "€"
         state: >
-          {{ (states('sensor.electric_meter_ev')|float(0) *
+          {{ (states('sensor.electric_meter_daily_ev')|float(0) *
               states('input_number.rate_ev')|float(0)) | round(2) }}
 
       - name: "Electricity Cost - Daily (Total)"
