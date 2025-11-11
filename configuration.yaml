@@ -172,7 +172,8 @@ template:
 
 utility_meter:
   electric_meter_daily:
-    source: sensor.meter_total_active_energy_from_grid
+    unique_id: electric_meter_daily
+    source: sensor.solis_meter_total_active_energy_from_grid
     cycle: daily
     tariffs:
       - day
@@ -180,7 +181,8 @@ utility_meter:
       - peak
       - ev
   electric_meter_weekly:
-    source: sensor.meter_total_active_energy_from_grid
+    unique_id: electric_meter_weekly
+    source: sensor.solis_meter_total_active_energy_from_grid
     cycle: weekly
     tariffs:
       - day
@@ -188,7 +190,8 @@ utility_meter:
       - peak
       - ev
   electric_meter_monthly:
-    source: sensor.meter_total_active_energy_from_grid
+    unique_id: electric_meter_monthly
+    source: sensor.solis_meter_total_active_energy_from_grid
     cycle: monthly
     tariffs:
       - day
@@ -196,58 +199,14 @@ utility_meter:
       - peak
       - ev
   grid_export_daily:
-    source: sensor.meter_total_active_energy_to_grid
+    unique_id: grid_export_daily
+    source: sensor.solis_meter_total_active_energy_to_grid
     cycle: daily
   grid_export_weekly:
-    source: sensor.meter_total_active_energy_to_grid
+    unique_id: grid_export_weekly
+    source: sensor.solis_meter_total_active_energy_to_grid
     cycle: weekly
   grid_export_monthly:
-    source: sensor.meter_total_active_energy_to_grid
+    unique_id: grid_export_monthly
+    source: sensor.solis_meter_total_active_energy_to_grid
     cycle: monthly
-
-
-input_number:
-  rate_peak:
-    name: "Rate Peak"
-    icon: "mdi:cash"
-    min: 0
-    max: 100
-    step: 0.001
-    unit_of_measurement: "€/kWh"
-    mode: slider
-
-  rate_night:
-    name: "Rate Night"
-    icon: "mdi:cash"
-    min: 0
-    max: 100
-    step: 0.001
-    unit_of_measurement: "€/kWh"
-    mode: slider
-
-  rate_day:
-    name: "Rate Day"
-    icon: "mdi:cash"
-    min: 0
-    max: 100
-    step: 0.001
-    unit_of_measurement: "€/kWh"
-    mode: slider
-
-  rate_ev:
-    name: "Rate EV"
-    icon: "mdi:cash"
-    min: 0
-    max: 100
-    step: 0.001
-    unit_of_measurement: "€/kWh"
-    mode: slider
-
-  rate_export:
-    name: "Rate Export"
-    icon: "mdi:cash"
-    min: 0
-    max: 100
-    step: 0.001
-    unit_of_measurement: "€/kWh"
-    mode: slider

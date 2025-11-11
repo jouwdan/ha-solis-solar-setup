@@ -2,22 +2,14 @@
   alias: 02:00 Set EV Rate
   description: ''
   triggers:
-  - trigger: time
-    at: 02:00:00
-  conditions: []
+  - at: 02:00:00
+    trigger: time
   actions:
   - target:
-      entity_id: select.electric_meter_daily
-    data:
-      option: ev
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_weekly
-    data:
-      option: ev
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_monthly
+      entity_id:
+      - select.electric_meter_daily
+      - select.electric_meter_weekly
+      - select.electric_meter_monthly
     data:
       option: ev
     action: select.select_option
@@ -26,22 +18,14 @@
   alias: 06:00 Set Night Rate
   description: ''
   triggers:
-  - trigger: time
-    at: 06:00:00
-  conditions: []
+  - at: 06:00:00
+    trigger: time
   actions:
   - target:
-      entity_id: select.electric_meter_daily
-    data:
-      value: night
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_weekly
-    data:
-      option: night
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_monthly
+      entity_id:
+      - select.electric_meter_daily
+      - select.electric_meter_weekly
+      - select.electric_meter_monthly
     data:
       option: night
     action: select.select_option
@@ -50,22 +34,14 @@
   alias: 08:00 Set Day Rate
   description: ''
   triggers:
-  - trigger: time
-    at: 08:00:00
-  conditions: []
+  - at: 08:00:00
+    trigger: time
   actions:
   - target:
-      entity_id: select.electric_meter_daily
-    data:
-      value: day
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_weekly
-    data:
-      option: day
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_monthly
+      entity_id:
+      - select.electric_meter_daily
+      - select.electric_meter_weekly
+      - select.electric_meter_monthly
     data:
       option: day
     action: select.select_option
@@ -74,22 +50,14 @@
   alias: 17:00 Set Peak Rate
   description: ''
   triggers:
-  - trigger: time
-    at: '17:00:00'
-  conditions: []
+  - at: '17:00:00'
+    trigger: time
   actions:
   - target:
-      entity_id: select.electric_meter_daily
-    data:
-      value: peak
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_weekly
-    data:
-      option: peak
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_monthly
+      entity_id:
+      - select.electric_meter_daily
+      - select.electric_meter_weekly
+      - select.electric_meter_monthly
     data:
       option: peak
     action: select.select_option
@@ -98,22 +66,14 @@
   alias: 19:00 Set Day Rate
   description: ''
   triggers:
-  - trigger: time
-    at: '19:00:00'
-  conditions: []
+  - at: '19:00:00'
+    trigger: time
   actions:
   - target:
-      entity_id: select.electric_meter_daily
-    data:
-      value: day
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_weekly
-    data:
-      option: day
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_monthly
+      entity_id:
+      - select.electric_meter_daily
+      - select.electric_meter_weekly
+      - select.electric_meter_monthly
     data:
       option: day
     action: select.select_option
@@ -122,22 +82,14 @@
   alias: 23:00 Set Night Rate
   description: ''
   triggers:
-  - trigger: time
-    at: '23:00:00'
-  conditions: []
+  - at: '23:00:00'
+    trigger: time
   actions:
   - target:
-      entity_id: select.electric_meter_daily
-    data:
-      value: night
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_weekly
-    data:
-      option: night
-    action: select.select_option
-  - target:
-      entity_id: select.electric_meter_monthly
+      entity_id:
+      - select.electric_meter_daily
+      - select.electric_meter_weekly
+      - select.electric_meter_monthly
     data:
       option: night
     action: select.select_option
