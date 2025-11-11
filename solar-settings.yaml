@@ -1,4 +1,4 @@
-- type: sections
+  - type: sections
     max_columns: 4
     title: Solar Settings
     path: solar-settings
@@ -12,19 +12,14 @@
             heading: Work Mode
             heading_style: title
           - type: tile
-            entity: switch.self_use_mode
+            grid_options:
+              columns: 12
+              rows: 1
+            entity: select.work_mode
             vertical: false
             icon_tap_action:
               action: more-info
             features_position: bottom
-          - type: tile
-            entity: switch.feed_in_priority_mode
-            vertical: false
-            icon_tap_action:
-              action: more-info
-            features_position: bottom
-          - type: tile
-            entity: switch.off_grid_mode
           - type: heading
             heading: Settings
             heading_style: title
