@@ -1,0 +1,113 @@
+type: grid
+cards:
+  - type: heading
+    icon: mdi:calendar-today
+    heading: Daily Energy Usage
+    heading_style: title
+  - show_name: true
+    show_icon: true
+    show_state: true
+    type: glance
+    entities:
+      - entity: sensor.net_cost_daily
+        icon: mdi:cash-multiple
+        name: Net
+      - entity: sensor.electricity_cost_daily_total
+        icon: mdi:home-import-outline
+        name: Import
+      - entity: sensor.export_revenue_daily
+        icon: mdi:transmission-tower-export
+        name: Export
+    columns: 3
+  - show_name: true
+    show_icon: true
+    show_state: true
+    type: glance
+    entities:
+      - entity: sensor.cost_daily_ev
+        name: EV
+        icon: mdi:ev-station
+      - entity: sensor.cost_daily_day
+        name: Day
+        icon: mdi:weather-sunny
+      - entity: sensor.cost_daily_night
+        icon: mdi:weather-night
+        name: Night
+      - entity: sensor.cost_daily_peak
+        name: Peak
+        icon: mdi:lightning-bolt
+    columns: 4
+  - type: heading
+    icon: mdi:calendar-week
+    heading: Weekly Energy Usage
+    heading_style: title
+  - show_name: true
+    show_icon: true
+    show_state: true
+    type: glance
+    entities:
+      - entity: sensor.net_cost_weekly
+        icon: mdi:cash-multiple
+        name: Net
+      - entity: sensor.electricity_cost_weekly_total
+        icon: mdi:home-import-outline
+        name: Import
+      - entity: sensor.export_revenue_weekly
+        icon: mdi:transmission-tower-export
+        name: Export
+    columns: 3
+  - show_name: true
+    show_icon: true
+    show_state: true
+    type: glance
+    entities:
+      - entity: sensor.cost_weekly_ev
+        name: EV
+        icon: mdi:ev-station
+      - entity: sensor.cost_weekly_day
+        name: Day
+        icon: mdi:weather-sunny
+      - entity: sensor.cost_weekly_night
+        icon: mdi:weather-night
+        name: Night
+      - entity: sensor.cost_weekly_peak
+        name: Peak
+        icon: mdi:lightning-bolt
+    columns: 4
+  - type: heading
+    icon: mdi:calendar-month
+    heading: Monthly Energy Usage
+    heading_style: title
+  - show_name: true
+    show_icon: true
+    show_state: true
+    type: glance
+    entities:
+      - entity: sensor.net_cost_monthly
+        icon: mdi:cash-multiple
+        name: Net
+      - entity: sensor.electricity_cost_monthly_total
+        icon: mdi:home-import-outline
+        name: Import
+      - entity: sensor.export_revenue_monthly
+        icon: mdi:transmission-tower-export
+        name: Export
+    columns: 3
+  - show_name: true
+    show_icon: true
+    show_state: true
+    type: glance
+    entities:
+      - entity: sensor.cost_monthly_ev
+        name: EV
+        icon: mdi:ev-station
+      - entity: sensor.cost_monthly_day
+        name: Day
+        icon: mdi:weather-sunny
+      - entity: sensor.cost_monthly_night
+        icon: mdi:weather-night
+        name: Night
+      - entity: sensor.cost_monthly_peak
+        name: Peak
+        icon: mdi:lightning-bolt
+    columns: 4

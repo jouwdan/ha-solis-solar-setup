@@ -8,7 +8,7 @@ This repository serves as a **backup and reference** for my Home Assistant–bas
 
 ### Solar Hardware
 
-- **Inverter:** Solis S5-EH1P 5 kW 
+- **Inverter:** Solis S5-EH1P 5 kW
 - **Datalogger:** Solis S2-WL-ST
 - **Solar Panels:** 16× Longi LR7-54HTB-465M (465 W Monocrystalline)
   - PV1 (Back): 7 panels  
@@ -36,13 +36,27 @@ This repository serves as a **backup and reference** for my Home Assistant–bas
 
 ---
 
-## 🌞 Power Flow Dashboard
+## 🌞 Power Flow Dashboard Card
 
 The **power flow card** displays live system stats — solar generation, battery charge, grid import/export, and household load.
 
 ![Power Flow Card](images/power-flow-card.png)
 
 Configuration file: [`power-flow-card.yaml`](/power-flow-card.yaml)
+
+---
+
+## Energy Cost Display
+
+This Lovelace view pairs the tariff-aware template sensors with a simple set of stats cards so I can see, at a glance, how much the house spent or earned during each billing window. The layout stacks **Daily**, **Weekly**, and **Monthly** rows, each row showing:
+
+- `sensor.electricity_cost_<period>_total` for the gross import spend
+- `sensor.export_revenue_<period>` for feed-in payments
+- `sensor.net_cost_<period>` (gross minus export) highlighted in green/red depending on whether the day was net-positive or net-negative
+
+Each tariff has its own chip that pulls from the `sensor.cost_<period>_<tariff>` series so I can immediately tell which rate is driving the total. Everything shown here comes directly from the template + `utility_meter` block in [`configuration.yaml`](configuration.yaml), so keeping the helpers up to date automatically keeps this dashboard correct.
+
+![Energy usage display](images/energy-usage.png)
 
 ---
 
@@ -58,6 +72,7 @@ My electricity provider uses **fixed time-of-use (TOU) rates**, so I use a `util
 The `utility_meter` block tracks **day/night/peak/EV tariffs** across **daily, weekly, and monthly** cycles. Matching template sensors (e.g., `Cost Daily - Day`, `Cost Weekly - Night`, `Cost Monthly - Peak`) multiply consumption by the helper-defined rate for each tariff, then roll those values up into period totals.
 
 ### Key Template Sensors
+
 - **Cost Tracking:** Daily/weekly/monthly cost per tariff (`Cost <Period> - <Tariff>`)
 - **Export Revenue:** Daily/weekly/monthly export income from `sensor.grid_export_<period>`
 - **Net Cost:** Period totals that subtract export revenue from total consumption cost
@@ -70,7 +85,8 @@ To automatically switch the current rate throughout the day, Home Assistant auto
 
 Configuration: [`automations.yaml`](/automations.yaml)
 
-### Example Schedule:
+### Example Schedule
+
 | Time  | Rate  |
 |-------|--------|
 | 02:00 | EV     |
@@ -102,9 +118,10 @@ Rates for each tariff can be adjusted directly within Home Assistant via the fol
 
 | File | Purpose |
 |------|----------|
-| [`configuration.yaml`](configuration.yaml) | Defines template sensors, utility meters, and rate helpers |
-| [`automations.yaml`](automations.yaml) | Handles automatic switching of TOU rates |
-| [`power-flow-card.yaml`](power-flow-card.yaml) | Configures the Sunsynk-style power flow visualization |
+| [`configuration.yaml`](configuration.yaml) | Template sensors, utility meters, and helper inputs for tariffs/costs |
+| [`automations.yaml`](automations.yaml) | Keeps every tariff selector in sync with the active TOU window |
+| [`power-flow-card.yaml`](power-flow-card.yaml) | Layout + entities for the Sunsynk-inspired power flow view |
+| [`energy-cost-column.yaml`](energy-cost-column.yaml) | Lovelace column showing daily/weekly/monthly spend, export, and net cost widgets |
 
 ---
 
