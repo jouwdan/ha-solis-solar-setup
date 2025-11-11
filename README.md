@@ -48,11 +48,11 @@ Configuration file: [`power-flow-card.yaml`](/power-flow-card.yaml)
 
 ## Energy Cost Display
 
-This Lovelace view pairs the tariff-aware template sensors with a simple set of stats cards so I can see, at a glance, how much the house spent or earned during each billing window. The layout stacks **Daily**, **Weekly**, and **Monthly** rows, each row showing:
+This Lovelace view (see [`energy-cost-column.yaml`](energy-cost-column.yaml)) pairs the tariff-aware template sensors with a simple set of stats cards so I can see, at a glance, how much the house spent or earned during each billing window. The layout stacks **Daily**, **Weekly**, and **Monthly** rows, each row showing:
 
 - `sensor.electricity_cost_<period>_total` for the gross import spend
 - `sensor.export_revenue_<period>` for feed-in payments
-- `sensor.net_cost_<period>` (gross minus export) highlighted in green/red depending on whether the day was net-positive or net-negative
+- `sensor.net_cost_<period>` (gross minus export) to show what the household actually paid after export credits
 
 Each tariff has its own chip that pulls from the `sensor.cost_<period>_<tariff>` series so I can immediately tell which rate is driving the total. Everything shown here comes directly from the template + `utility_meter` block in [`configuration.yaml`](configuration.yaml), so keeping the helpers up to date automatically keeps this dashboard correct.
 
