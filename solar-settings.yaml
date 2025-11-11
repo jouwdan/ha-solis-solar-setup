@@ -1,0 +1,176 @@
+- type: sections
+    max_columns: 4
+    title: Solar Settings
+    path: solar-settings
+    icon: mdi:sun-compass
+    visible:
+      - user: 79c54ae4bf454648ad45909fdb161b03
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Work Mode
+            heading_style: title
+          - type: tile
+            entity: switch.self_use_mode
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: tile
+            entity: switch.feed_in_priority_mode
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: tile
+            entity: switch.off_grid_mode
+          - type: heading
+            heading: Settings
+            heading_style: title
+          - type: tile
+            grid_options:
+              columns: 12
+              rows: 1
+            entity: switch.allow_grid_to_charge_the_battery
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: heading
+            heading: Off-Grid Settings
+            heading_style: title
+          - type: tile
+            entity: switch.off_grid_mode
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: tile
+            entity: number.solis_off_grid_overdischarge_soc
+            name: Overdischarge SOC
+            vertical: false
+            features_position: bottom
+      - type: grid
+        cards:
+          - type: heading
+            heading: TOU Charge Periods
+            heading_style: title
+          - type: tile
+            entity: switch.grid_time_of_use_charging_period_1
+            name: TOU Charge Period 1
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: tile
+            entity: switch.grid_time_of_use_charging_period_2
+            name: TOU Charge Period 2
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: heading
+            heading: Charge Period 1
+            heading_style: title
+          - type: tile
+            entity: time.solis_grid_time_of_use_charge_start_slot_1
+            name: Charge Start
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: tile
+            entity: time.solis_grid_time_of_use_charge_end_slot_1
+            name: Charge End
+            vertical: false
+            features_position: bottom
+          - type: tile
+            entity: number.solis_grid_time_of_use_charge_cut_off_soc_slot_1
+            name: Cut Off SOC
+            icon: ''
+            vertical: false
+            features_position: bottom
+          - type: tile
+            entity: number.solis_grid_time_of_use_charge_battery_current_slot_1
+            name: Current
+            icon: ''
+            vertical: false
+            features_position: bottom
+          - type: heading
+            heading: Charge Period 2
+            heading_style: title
+          - type: tile
+            entity: time.solis_grid_time_of_use_charge_start_slot_2
+            name: Charge Start
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: tile
+            entity: time.solis_grid_time_of_use_charge_end_slot_2
+            name: Charge End
+            vertical: false
+            features_position: bottom
+          - type: tile
+            entity: number.solis_grid_time_of_use_charge_cut_off_soc_slot_2
+            name: Cut Off SOC
+            icon: ''
+            vertical: false
+            features_position: bottom
+          - type: tile
+            entity: number.solis_grid_time_of_use_charge_battery_current_slot_2
+            name: Current
+            icon: ''
+            vertical: false
+            features_position: bottom
+      - type: grid
+        cards:
+          - type: heading
+            heading: TOU Discharge Periods
+            heading_style: title
+          - type: tile
+            entity: switch.grid_time_of_use_discharge_period_1
+            name: TOU Discharge Period 1
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: tile
+            entity: switch.grid_time_of_use_discharge_period_2
+            name: TOU Discharge Period 2
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: heading
+            heading: Discharge Period 1
+            heading_style: title
+          - type: tile
+            entity: time.solis_grid_time_of_use_discharge_start_slot_1
+            name: Discharge Start
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: tile
+            entity: time.solis_grid_time_of_use_discharge_end_slot_1
+            name: Discharge End
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: tile
+            entity: number.solis_grid_time_of_use_discharge_cut_off_soc_slot_1
+            name: Cut Off SOC
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom
+          - type: tile
+            entity: number.solis_grid_time_of_use_discharge_battery_current_slot_1
+            name: Current
+            vertical: false
+            icon_tap_action:
+              action: more-info
+            features_position: bottom

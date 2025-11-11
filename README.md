@@ -46,6 +46,20 @@ Configuration file: [`power-flow-card.yaml`](/power-flow-card.yaml)
 
 ---
 
+## 🔧 Solar Settings Page
+
+To avoid digging through the Solis app, I added the most-used inverter toggles and TOU windows inside Home Assistant via [`solar-settings.yaml`](solar-settings.yaml). The page is split into three grids:
+
+- **Work Mode & General Settings:** Tiles for self-use/feed-in/off-grid toggles plus grid-charging allowance and off-grid SOC limits.
+- **TOU Charge Periods:** Enables each charge slot and lets me edit start/end times, cut-off SOC, and desired grid charge current.
+- **TOU Discharge Periods:** Mirrors the charge section but for discharge windows, with the same start/end/SOC/current controls.
+
+Everything here talks directly to the Solis Modbus entities, so any changes take effect immediately on the inverter.
+
+![solar settings page](images/solar-settings.png)
+
+---
+
 ## Energy Cost Display
 
 This Lovelace view (see [`energy-cost-column.yaml`](energy-cost-column.yaml)) pairs the tariff-aware template sensors with a simple set of stats cards so I can see, at a glance, how much the house spent or earned during each billing window. The layout stacks **Daily**, **Weekly**, and **Monthly** rows, each row showing:
@@ -122,6 +136,7 @@ Rates for each tariff can be adjusted directly within Home Assistant via the fol
 | [`automations.yaml`](automations.yaml) | Keeps every tariff selector in sync with the active TOU window |
 | [`power-flow-card.yaml`](power-flow-card.yaml) | Layout + entities for the Sunsynk-inspired power flow view |
 | [`energy-cost-column.yaml`](energy-cost-column.yaml) | Lovelace column showing daily/weekly/monthly spend, export, and net cost widgets |
+| [`solar-settings.yaml`](solar-settings.yaml) | Settings dashboard exposing Solis work modes plus TOU charge/discharge slots |
 
 ---
 
