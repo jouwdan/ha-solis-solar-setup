@@ -50,20 +50,23 @@ Configuration file: [`power-flow-card.yaml`](/power-flow-card.yaml)
 
 My electricity provider uses **fixed time-of-use (TOU) rates**, so I use a `utility_meter` sensor to monitor and calculate energy costs based on the active rate.
 
-- Data Source: `sensor.meter_total_active_energy_from_grid`  
+- Consumption Source: `sensor.solis_meter_total_active_energy_from_grid`  
+- Export Source: `sensor.solis_meter_total_active_energy_to_grid`  
 - Configuration: [`configuration.yaml`](/configuration.yaml)
 - Helpers: Rates configurable under `/config/helpers` in Home Assistant
 
+The `utility_meter` block tracks **day/night/peak/EV tariffs** across **daily, weekly, and monthly** cycles. Matching template sensors (e.g., `Cost Daily - Day`, `Cost Weekly - Night`, `Cost Monthly - Peak`) multiply consumption by the helper-defined rate for each tariff, then roll those values up into period totals.
+
 ### Key Template Sensors
-- **Cost Tracking:** Calculates daily cost per rate (Day, Night, Peak, EV)
-- **Export Revenue:** Tracks daily export income
-- **Net Cost:** Calculates the day’s total net energy cost
+- **Cost Tracking:** Daily/weekly/monthly cost per tariff (`Cost <Period> - <Tariff>`)
+- **Export Revenue:** Daily/weekly/monthly export income from `sensor.grid_export_<period>`
+- **Net Cost:** Period totals that subtract export revenue from total consumption cost
 
 ---
 
 ## ⚡ Automations
 
-To automatically switch the current rate throughout the day, Home Assistant automations update the `select.electric_meter` entity at defined times.
+To automatically switch the current rate throughout the day, Home Assistant automations update all three selectors — `select.electric_meter_daily`, `select.electric_meter_weekly`, and `select.electric_meter_monthly` — at the same time. This keeps every utility meter aligned with the active TOU window.
 
 Configuration: [`automations.yaml`](/automations.yaml)
 
